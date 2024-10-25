@@ -4,6 +4,7 @@ import org.koreait.global.libs.Utils;
 import org.koreait.main.controllers.LoginController;
 import org.koreait.main.controllers.ProductBranchController;
 import org.koreait.member.entities.Accession;
+import org.koreait.product.controllers.ProductFixController;
 
 import java.util.function.Consumer;
 
@@ -158,7 +159,12 @@ public abstract class Controller {
             } else if (input.toUpperCase().equals("M") || input.equals("ㅡ")) {
                 // 입력 데이터가 M(대소문자 구분 없음)가 유입되면 메인 메뉴로 이동
                 Utils.loadController(ProductBranchController.class);
+
+            } else if (input.toUpperCase().equals("F")|| input.equals("ㄹ")) {
+                //# 입력 데이터가 F(대소문자 구분 없음)가 유입되면 수정 메뉴로 이동
+                Utils.loadController(ProductFixController.class);
             }
+
             else if (input.toUpperCase().equals("O") || input.equals("ㅐ")) {
                 Accession acc = BeanContainer.getBean(Accession.class);
                 acc.setLoginCheck(false);
