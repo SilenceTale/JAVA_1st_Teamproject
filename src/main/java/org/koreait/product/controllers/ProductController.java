@@ -61,6 +61,8 @@ public class ProductController extends Controller {
 
     // ##Controller에서 상속받은 추상 메서드들 오버라이딩
     // getPromptText 오버라이딩해 출력값 변경 ##
+
+    //수정 F로 만들어서 수정으로 들어가게끔 수정
     @Override
     protected String getPromptText() {
         return "등록할 상품 정보를 입력하세요(메인 메뉴: M, 종료: Q).\n";
