@@ -2,6 +2,7 @@ package org.koreait.product.controllers;
 
 import org.koreait.global.BeanContainer;
 import org.koreait.global.Controller;
+
 import org.koreait.global.Model;
 import org.koreait.global.Router;
 import org.koreait.global.libs.Utils;
@@ -18,6 +19,33 @@ import java.util.Scanner;
 
 public class ProductFixController extends Controller implements RequiredValidator, TypeValidator {
     public ProductFixController() {
+
+            // ## 사용자 요청 input
+            // 한개의 값 비교
+            // 값 1개 들어옴(input) 나가는 값(output) 없음 ##
+            setInputProcess(input -> {
+                /* 유효성 검사 S */
+                if (!check(input)) { // 필수 항목 체크
+                    return;
+                }
+
+                // ## 숫자 체크 ##
+                if (!isNumber(input)) {
+                    System.out.println("상품 번호는 숫자만 입력하세요.");
+                    return;
+                }
+
+                /* 유효성 검사 E */
+
+                // 선택한 상품 번호와 함께 상품 상세로 이동
+                // ## 유효성 검사 통과시 상품 데이터 넘겨줌
+                // Model에 상품 번호를 Long값으로 넘겨줌 ##
+                Utils.loadController(ProductViewController.class, new Model(Long.parseLong(input)));
+
+
+            });
+
+        //없는 값이라면 ProductNotFoundException으로 던지기
         setPromptProcess(() -> {
             Object data = getData();
             if (data == null) {
@@ -75,6 +103,8 @@ public class ProductFixController extends Controller implements RequiredValidato
     @Override
     public void view()  {
         Utils.loadTpl(ProductForm.class);
+
+
     }
 }
 

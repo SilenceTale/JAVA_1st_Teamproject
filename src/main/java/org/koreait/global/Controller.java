@@ -159,10 +159,6 @@ public abstract class Controller {
             } else if (input.toUpperCase().equals("M") || input.equals("ㅡ")) {
                 // 입력 데이터가 M(대소문자 구분 없음)가 유입되면 메인 메뉴로 이동
                 Utils.loadController(ProductBranchController.class);
-
-            } else if (input.toUpperCase().equals("F")|| input.equals("ㄹ")) {
-                //# 입력 데이터가 F(대소문자 구분 없음)가 유입되면 수정 메뉴로 이동
-                Utils.loadController(ProductFixController.class);
             }
 
             else if (input.toUpperCase().equals("O") || input.equals("ㅐ")) {
